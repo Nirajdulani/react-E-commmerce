@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Image from '../components/Image/th (1).jpg'
 
 const Navbar = () => {
   const items = useSelector((state)=> state.cart);
@@ -8,7 +9,8 @@ const Navbar = () => {
     <>
     
     <div className='flex p-4 bg-black text-white space-x-20'>
-    <span className='text-3xl  pl-11'>ONLINE STORE</span>
+      <div className='h-auto'><img src={Image} alt="" /></div>
+    <span className='text-3xl  pl-11 text-red-300'>ONLINE STORE</span>
     <div className="text-2xl space-x-10">
 
       <Link className='navlink hover:text-red-200 ' to="/">Home</Link>

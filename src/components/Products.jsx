@@ -1,27 +1,43 @@
 import React from 'react'
 import {useEffect, useState } from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {add} from '../store/CartSlice'
+//import {fetchProducts} from '../store/ProductSlice'
+
+
 const Products = () => {
     
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
 
-    const [userList, setUserList] = useState([]);
-    useEffect(() => {
+
+//const {data , status} = useSelector((state) => state.products);
+   
+  const [userList, setUserList] = useState([]);
+      useEffect(() => {
       fetchUser();
+
+   // dispatch(fetchProducts());
     }, []);
-    const fetchUser = async () => {
+
+
+  const fetchUser = async () => {
+
       await fetch("https://dummyjson.com/products/")
-        .then((response) => response.json())
-        .then((data) => {
+      .then((response) => response.json())
+
+      .then((data) => {
           setUserList(data.products);
         })
-        .catch((err) => console.log(err));
+
+      .catch((err) => console.log(err));
+
     };
 
-    const handleAdd = (user) => {
+    const handleAdd = (user) => 
+    {
       dispatch(add(user));
     }
+
   return (
     <>
     <div className='productsWrapper border-white text-white bg-black p-10 border '>
